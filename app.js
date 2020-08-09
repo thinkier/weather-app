@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 
-// const indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 const citiesApiRouter = require('./routes/api/cities');
 const cityApiRouter = require('./routes/api/city');
 
@@ -27,7 +27,7 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/', indexRouter);
+app.use('/', indexRouter);
 app.use('/api/cities', citiesApiRouter);
 app.use('/api/city', cityApiRouter);
 

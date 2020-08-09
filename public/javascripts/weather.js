@@ -1,13 +1,3 @@
-window.addEventListener("DOMContentLoaded", () => {
-	let startAppBtn = document.getElementById("start-app");
-
-	if (startAppBtn !== null) {
-		startAppBtn.addEventListener("click", () => startApp()
-			.catch(err => console.error("Failed to start app: " + err))
-		);
-	}
-});
-
 class CircularBufferIterator {
 	constructor(linearBuffer) {
 		this.buffer = linearBuffer;
