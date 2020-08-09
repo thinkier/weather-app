@@ -52,6 +52,7 @@ class City {
 				weatherFaClass: "spinner",
 				weatherDescription: getLoadingText()
 			});
+			document.getElementById("temperatures").style.visibility = 'hidden';
 
 			this.weather = await fetch("/api/city/" + normalize(this.name))
 				.then(d => d.json())
@@ -59,6 +60,7 @@ class City {
 		}
 
 		updatePage(template, state, this.weather);
+		document.getElementById("temperatures").style.visibility = 'visible';
 	}
 }
 
