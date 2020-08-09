@@ -66,6 +66,13 @@ async function startApp() {
 	// We're rendering using handlebars on the client side
 	let src = document.getElementById("weather").innerHTML;
 	let template = Handlebars.compile(src);
+	Handlebars.registerHelper('celsius', function (temp) {
+		if (temp !== undefined) {
+			// Degree sign because I can't use &deg;
+			return Handlebars.escapeExpression(temp) + " \u00b0C";
+		}
+		return "";
+	});
 
 	// Fetch cities on start, we can use specific endpoints for per-city weather later
 	let cities = await fetch("/api/cities")
