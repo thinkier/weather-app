@@ -1,0 +1,30 @@
+<h1 class="title animate__animated animate__fadeInDown">{{city}}</h1>
+<div class="columns is-mobile">
+    <div class="column is-narrow">
+        <button id="prev-city" class="button is-large animate__animated animate__fadeInLeft">
+            <i class="fas fa-arrow-circle-left"></i>
+        </button>
+    </div>
+    <div class="column animate__animated animate__fadeInDown">
+        <i class="weather-icon fas fa-{{weatherFaClass}}" aria-hidden="true"></i>
+    </div>
+    <div class="column is-narrow">
+        <button id="next-city" class="button is-large animate__animated animate__fadeInRight">
+            <i class="fas fa-arrow-circle-right"></i>
+        </button>
+    </div>
+</div>
+<div class="columns is-mobile animate__animated animate__fadeInUp">
+    <div class="temperature column">
+        <i class="fas fa-temperature-low"></i>
+        <p> {{temperature.low}} &deg;C</p>
+    </div>
+    <div class="temperature column">
+        <p class="temp-now"> {{temperature.now}} &deg;C</p>
+    </div>
+    <div class="temperature column">
+        <i class="fas fa-temperature-high"></i>
+        <p> {{temperature.high}} &deg;C</p>
+    </div>
+</div>
+<p class="subtitle animate__animated animate__fadeInUp">{{weatherDescription}}</p>

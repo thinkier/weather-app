@@ -6,7 +6,8 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 
 // const indexRouter = require('./routes/index');
-const citiesRouter = require('./routes/cities');
+const citiesApiRouter = require('./routes/api/cities');
+const cityApiRouter = require('./routes/api/city');
 
 const app = express();
 
@@ -27,7 +28,8 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);
-app.use('/api/cities', citiesRouter);
+app.use('/api/cities', citiesApiRouter);
+app.use('/api/city', cityApiRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

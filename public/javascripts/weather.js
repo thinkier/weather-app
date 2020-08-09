@@ -39,22 +39,36 @@ class CircularBufferIterator {
 	}
 }
 
+function getLoadingText() {
+	const prefills = ["Loading", "Seeding clouds", "My forecast? Sunny... -side up."];
+
+	return prefills[Math.floor(prefills.length * Math.random())];
+}
+
+function normalize(str) {
+	return str.toLowerCase().replace(" ", "_");
+}
+
 class City {
 	constructor(name) {
 		this.name = name;
 	}
 
-	renderInto(template) {
+	// I can also use a weak reference but yeah I'd rather not
+	async renderInto(template, state) {
 		if (this.weather === undefined) {
-			updatePage(template, {
+			updatePage(template, state, {
 				city: this.name,
 				weatherFaClass: "spinner",
-				weatherDescription: ""
+				weatherDescription: getLoadingText()
 			});
-			// todo promise
-		} else {
-			updatePage(template, this.weather);
+
+			this.weather = await fetch("/api/city/" + normalize(this.name))
+				.then(d => d.json())
+				.catch(err => console.error("Error while fetching weather for " + this.name + ": " + err));
 		}
+
+		updatePage(template, state, this.weather);
 	}
 }
 
@@ -72,14 +86,25 @@ async function startApp() {
 		return;
 	}
 
-	let state = new CircularBufferIterator(cities.map(function (name) {
-		return new City(name);
-	}));
+	let state = new CircularBufferIterator(cities.map(name => new City(name)));
 
-	state.currentItem().renderInto(template);
+	await state.currentItem().renderInto(template, state);
 }
 
-function updatePage(template, ctx) {
+function registerCarouselControl(id, template, state, manipulator) {
+	let button = document.getElementById(id);
+
+	button.addEventListener("click", async function () {
+		manipulator(state);
+
+		await state.currentItem().renderInto(template, state);
+	});
+}
+
+function updatePage(template, state, ctx) {
 	// XSS protection is assured by handlebars
 	document.getElementById("app").innerHTML = template(ctx);
+
+	registerCarouselControl("prev-city", template, state, state => state.lastItem());
+	registerCarouselControl("next-city", template, state, state => state.nextItem());
 }
