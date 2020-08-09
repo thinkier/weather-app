@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
+/* GET cities API endpoint. */
 router.get('/', function (req, res) {
-	res.render('index', {title: 'Weather Appamathingo'});
+	res.json(["Melbourne"]);
 });
 
 module.exports = router;
