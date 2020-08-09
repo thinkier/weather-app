@@ -22,7 +22,6 @@
 - Circular buffers are pretty easy in terms of technical challenges
 
 # Libraries Used
-- animate.css (animation to make the page look nice)
 - FontAwesome (weather / loading icons)
 - Handlebars (used mainly for client side rendering)
 - Express (web server)

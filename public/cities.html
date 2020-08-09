@@ -8,29 +8,28 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js'></script>
     <link rel='stylesheet' href='/stylesheets/weather.css'/>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <script src='/javascripts/weather.js'></script>
     <script src='/javascripts/weatherLoader.js'></script>
 </head>
 <body>
 <template id="weather">
-    <h1 class="title animate__animated animate__fadeInDown">{{city}}</h1>
+    <h1 class="title">{{city}}</h1>
     <div class="columns is-mobile">
         <div class="column is-narrow">
-            <button id="prev-city" class="button is-large animate__animated animate__fadeInLeft">
+            <button id="prev-city" class="button is-large">
                 <i class="fas fa-arrow-circle-left"></i>
             </button>
         </div>
-        <div class="column animate__animated animate__fadeInDown">
+        <div class="column">
             <i class="weather-icon fas fa-{{weatherFaClass}}" aria-hidden="true"></i>
         </div>
         <div class="column is-narrow">
-            <button id="next-city" class="button is-large animate__animated animate__fadeInRight">
+            <button id="next-city" class="button is-large">
                 <i class="fas fa-arrow-circle-right"></i>
             </button>
         </div>
     </div>
-    <div class="columns is-mobile animate__animated animate__fadeInUp">
+    <div class="columns is-mobile">
         <div class="temperature column">
             <i class="fas fa-temperature-low"></i>
             <p> {{temperature.low}} &deg;C</p>
@@ -43,7 +42,7 @@
             <p> {{temperature.high}} &deg;C</p>
         </div>
     </div>
-    <p class="subtitle animate__animated animate__fadeInUp">{{weatherDescription}}</p>
+    <p class="subtitle">{{weatherDescription}}</p>
 </template>
 
 <div class="container" id="app">
