@@ -47,9 +47,9 @@ class City {
 	renderInto(template) {
 		if (this.weather === undefined) {
 			updatePage(template, {
-				city: name,
-				weatherFaClass: "loading",
-				weatherDescription: "spinner"
+				city: this.name,
+				weatherFaClass: "spinner",
+				weatherDescription: ""
 			});
 			// todo promise
 		} else {
@@ -76,12 +76,10 @@ async function startApp() {
 		return new City(name);
 	}));
 
-	updatePage(template, state.currentItem().renderInto(template));
+	state.currentItem().renderInto(template);
 }
 
 function updatePage(template, ctx) {
 	// XSS protection is assured by handlebars
-	let html = template(ctx);
-
-	document.getElementById("app").innerHTML = html;
+	document.getElementById("app").innerHTML = template(ctx);
 }
