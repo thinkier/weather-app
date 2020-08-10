@@ -21,6 +21,27 @@
 - I went with reference passing instead of using weak references for the navigation buttons
 - Circular buffers are pretty easy in terms of technical challenges
 
+# API Endpoints
+## `/api/cities`
+Returns a list of cities as a JSON array of strings
+
+## `/api/city/<city>`
+Returns the weather of the specified city
+
+### Example
+```json
+{
+	city: "Swallow Falls",
+	temperature: {
+		low: -5,
+		now: 20,
+		high: 400
+	},
+	weatherFaClass: "cloud-meatball",
+	weatherDescription: "Cloudy with a chance of meatballs"
+}
+```
+
 # Libraries Used
 - FontAwesome (weather / loading icons)
 - Handlebars (used mainly for client side rendering)
