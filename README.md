@@ -31,14 +31,14 @@ Returns the weather of the specified city
 ### Example
 ```json
 {
-	city: "Swallow Falls",
-	temperature: {
-		low: -5,
-		now: 20,
-		high: 400
+	"city": "Swallow Falls",
+	"temperature": {
+		"low": -5,
+		"now": 20,
+		"high": 400
 	},
-	weatherFaClass: "cloud-meatball",
-	weatherDescription: "Cloudy with a chance of meatballs"
+	"weatherFaClass": "cloud-meatball",
+	"weatherDescription": "Cloudy with a chance of meatballs"
 }
 ```
 
